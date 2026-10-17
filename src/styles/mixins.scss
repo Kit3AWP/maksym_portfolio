@@ -1,0 +1,15 @@
+$breakpoint-tablet: 1199px;
+$breakpoint-phone: 639px;
+
+@mixin on-tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+
+@mixin on-phone {
+  @media (max-width: $breakpoint-phone) {
+    @content;
+  }
+}
