@@ -32,10 +32,10 @@ body {
   background-color: var(--bg-main);
   background-image: 
     radial-gradient(at 0% 0%, rgba(17, 24, 39, 1) 0, transparent 80%), 
-    radial-gradient(at 50% 0%, rgba(30, 58, 138, 0.4) 0, transparent 80%), 
+    radial-gradient(at 50% 0%, rgba(24, 47, 110, 0.4) 0, transparent 80%), 
     radial-gradient(at 100% 0%, rgba(17, 24, 39, 1) 0, transparent 80%);
   background-attachment: fixed;
-  color: #ffffff;
+  color: #fff;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,6 +47,48 @@ body {
   min-height: 100vh;
 }
 
+#root::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
+#root::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(79, 172, 254, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 172, 254, 0.25) 1px, transparent 1px);
+  background-size: 100px 100px;
+  
+  mask-image: radial-gradient(
+    250px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), 
+    black 0%, 
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    250px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), 
+    black 0%, 
+    transparent 100%
+  );
+}
+
 main {
-  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 32px 80px;
 }

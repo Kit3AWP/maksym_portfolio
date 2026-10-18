@@ -5,6 +5,7 @@ import { SkillsSection } from './modules/SkillsSection';
 import { ContactsSection } from './modules/ContactsSection';
 import { Header } from './shared/components/Header';
 import { Footer } from './shared/components/Footer';
+import { CursorEffects } from './shared/components/CursorEffects';
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
         <ContactsSection />
       </main>
       <Footer />
+      <CursorEffects />
     </>
   );
 };

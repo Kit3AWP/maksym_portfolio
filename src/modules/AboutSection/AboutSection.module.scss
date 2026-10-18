@@ -1,0 +1,136 @@
+@use '../../styles/mixins' as *;
+
+.about {
+  margin: 80px 6% 0px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glassContainer {
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(20, 20, 25, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 60px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(79, 172, 254, 0.5), transparent);
+  }
+}
+
+.title {
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 48px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  
+  .tag {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    color: rgba(79, 172, 254, 0.4);
+    font-weight: 400;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 80px;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
+.factsWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.factsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #e0e0e0;
+    font-size: 1rem;
+  }
+}
+
+.iconWrapper {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(79, 172, 254, 0.1);
+    border-color: rgba(79, 172, 254, 0.3);
+    transform: translateY(-2px);
+    
+    .icon {
+      color: var(--color-accent);
+    }
+  }
+}
+
+.icon {
+  color: #a0a0b0;
+  transition: color 0.3s ease;
+}
+
+@include on-tablet {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .glassContainer {
+    padding: 40px 30px;
+  }
+}

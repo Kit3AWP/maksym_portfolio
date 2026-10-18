@@ -13,3 +13,11 @@ $breakpoint-phone: 639px;
     @content;
   }
 }
+
+@mixin text-gradient($gradient-value) {
+  background: $gradient-value;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

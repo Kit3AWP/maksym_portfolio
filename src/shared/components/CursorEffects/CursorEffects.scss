@@ -1,0 +1,13 @@
+.cursor-dot {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 4px var(--color-accent), 0 0 4px var(--color-accent);
+  transition: opacity 0.5s ease;
+}
