@@ -1,7 +1,8 @@
 @use '../../styles/mixins' as *;
 
 .skillsSection {
-  min-height: 80vh;
+  margin-top: 120px;
+  padding: 0 8%;
   display: flex;
   align-items: center;
 }
@@ -34,8 +35,28 @@
   font-size: 3.5rem;
   font-weight: 700;
   margin: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
-  @include text-gradient(var(--grad-primary));
+  @include on-tablet {
+    font-size: 2.5rem;
+  }
+  @include on-phone {
+    font-size: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.tag {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  color: rgba(var(--color-accent-rgb), 0.4);
+  font-weight: 400;
+  background: none !important;
+  -webkit-text-fill-color: rgba(var(--color-accent-rgb), 0.4) !important;
 }
 
 .description {
@@ -50,11 +71,16 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
+  }
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(var(--text-primary-rgb), 0.03);
+  border: 1px solid rgba(var(--text-primary-rgb), 0.05);
   border-radius: 16px;
   padding: 32px 20px;
   display: flex;
@@ -83,28 +109,19 @@
 
   &:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(20, 20, 25, 0.8);
+    border-color: rgba(var(--text-primary-rgb), 0.15);
+    background: rgba(var(--bg-card-rgb), 0.8);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
-    &::before {
-      opacity: 0.15;
-    }
-
-    .iconWrapper {
-      color: var(--hover-color);
-      transform: scale(1.1);
-    }
-    
-    .skillName {
-      color: #fff;
-    }
+    &::before { opacity: 0.15; }
+    .iconWrapper { color: var(--hover-color); transform: scale(1.1); }
+    .skillName { color: var(--text-primary); }
   }
 }
 
 .iconWrapper {
   font-size: 3rem;
-  color: #a0a0b0;
+  color: var(--text-secondary);
   transition: all 0.3s ease;
   z-index: 1; 
   display: flex;
@@ -113,22 +130,11 @@
 }
 
 .skillName {
-  font-family: var(--font-primary);
+  font-family: var(--font-tech);
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-secondary);
   text-align: center;
   transition: color 0.3s ease;
   z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-  
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 16px;
-  }
 }

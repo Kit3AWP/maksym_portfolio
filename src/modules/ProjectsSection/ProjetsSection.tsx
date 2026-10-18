@@ -18,7 +18,7 @@ export const ProjectsSection = () => {
       tech: ['React', 'TypeScript', 'REST API', 'SCSS'],
       github: 'https://github.com/Kit3AWP/Phone_catalog',
       demo: 'https://kit3awp.github.io/Phone_catalog/',
-      image: 'https://via.placeholder.com/600x400/141419/56b0ff?text=Phone+Catalog',
+      image: '/screenshots/phoneCatalog.webp',
     },
     {
       title: 'Personal Portfolio',
@@ -34,7 +34,7 @@ export const ProjectsSection = () => {
       tech: ['JavaScript', 'HTML5', 'CSS3'],
       github: 'https://github.com/Kit3AWP/JavaScript_2048_game',
       demo: 'https://kit3awp.github.io/JavaScript_2048_game/',
-      image: '/screenshots/2048game.png',
+      image: '/screenshots/2048game.webp',
     }
   ];
 

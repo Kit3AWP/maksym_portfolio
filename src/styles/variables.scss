@@ -2,9 +2,19 @@
   --font-primary: 'Outfit', sans-serif;
   --font-tech: 'Fira Code', monospace;
 
-  --color-accent: #56b0ff;
-  --text-secondary: #9090a0;
   --bg-main: #0d0d12;
+  --bg-footer: #08080c;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --color-accent: #56b0ff;
+  --color-danger: #ff4757;
 
-  --grad-primary: linear-gradient(135deg, #00f2fe, #56b0ff);
+  --bg-main-rgb: 13, 13, 18;
+  --bg-card-rgb: 20, 20, 25;
+  --text-primary-rgb: 255, 255, 255;
+  --color-accent-rgb: 86, 176, 255;
+  --color-secondary-rgb: 51, 51, 51;
+
+  --grad-primary: linear-gradient(135deg, #00f2fe, var(--color-accent));
+  --grad-avatar: linear-gradient(135deg, #00f2fe, var(--color-accent), #881c87);
 }

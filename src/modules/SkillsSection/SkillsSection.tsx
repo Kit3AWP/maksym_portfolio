@@ -1,10 +1,17 @@
-import { 
-  SiJavascript, SiTypescript, SiReact, SiRedux, 
-  SiHtml5, SiSass, SiDocker, SiGithub, SiGit 
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiRedux,
+  SiHtml5,
+  SiSass,
+  SiDocker,
+  SiGithub,
+  SiGit,
 } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
 import { BsRobot } from 'react-icons/bs';
-import { MonitorSmartphone } from 'lucide-react'; 
+import { MonitorSmartphone } from 'lucide-react';
 import styles from './SkillsSection.module.scss';
 
 export const SkillsSection = () => {
@@ -15,7 +22,11 @@ export const SkillsSection = () => {
     { name: 'Redux.js', icon: <SiRedux />, color: '#764ABC' },
     { name: 'HTML5', icon: <SiHtml5 />, color: '#E34F26' },
     { name: 'SCSS', icon: <SiSass />, color: '#CC6699' },
-    { name: 'Responsive Design', icon: <MonitorSmartphone size="1em" />, color: 'var(--color-accent)' },
+    {
+      name: 'Responsive Design',
+      icon: <MonitorSmartphone size="1em" />,
+      color: 'var(--color-accent)',
+    },
     { name: 'REST API & Axios', icon: <TbApi />, color: 'var(--color-accent)' },
     { name: 'Git', icon: <SiGit />, color: '#F05032' },
     { name: 'GitHub', icon: <SiGithub />, color: '#ffffff' },
@@ -26,11 +37,12 @@ export const SkillsSection = () => {
   return (
     <section id="skills" className={styles.skillsSection}>
       <div className={styles.container}>
-        
         <div className={styles.header}>
           <span className={styles.subtitle}>SKILLS & EXPERTISE</span>
           <h2 className={styles.title}>
-            My <span className={styles.highlight}>Tech Stack</span>
+            <span className={styles.tag}>&lt;h2&gt;</span>
+              My Tech Stack
+            <span className={styles.tag}>&lt;/h2&gt;</span>
           </h2>
           <p className={styles.description}>
             Proficient in modern web technologies and frameworks, constantly expanding my skill set.
@@ -39,19 +51,16 @@ export const SkillsSection = () => {
 
         <div className={styles.grid}>
           {skills.map((skill, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={styles.card}
               style={{ '--hover-color': skill.color } as React.CSSProperties}
             >
-              <div className={styles.iconWrapper}>
-                {skill.icon}
-              </div>
+              <div className={styles.iconWrapper}>{skill.icon}</div>
               <span className={styles.skillName}>{skill.name}</span>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

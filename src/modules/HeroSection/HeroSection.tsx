@@ -4,6 +4,10 @@ import { ArrowRight, Download, Mail } from 'lucide-react';
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className={styles.hero} id="home">
       <div className={styles.avatarWrapper}>
@@ -35,10 +39,10 @@ export const HeroSection = () => {
         </p>
         <div className={styles.actions}>
           <div className={styles.mainButtons}>
-            <button className={styles.primaryBtn}>
+            <button className={styles.primaryBtn} onClick={() => scrollTo('projects')}>
               View Projects <ArrowRight size={18} className={styles.arrow} />
             </button>
-            <button className={styles.secondaryBtn}>
+            <button className={styles.secondaryBtn} onClick={() => scrollTo('contacts')}>
               Contact Me <Mail size={18} className={styles.mail} />
             </button>
           </div>
