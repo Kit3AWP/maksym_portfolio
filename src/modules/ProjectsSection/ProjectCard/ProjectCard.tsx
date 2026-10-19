@@ -24,7 +24,7 @@ export const ProjectCard = ({ project, audioSrc }: ProjectCardProps) => {
   const handleMouseEnter = () => {
     if (!audioRef.current) {
       audioRef.current = new Audio(audioSrc);
-      audioRef.current.volume = 0.2;
+      audioRef.current.volume = 0.5;
     }
 
     audioRef.current.play().catch((err) => console.log('Browser waiting for a click:', err));
