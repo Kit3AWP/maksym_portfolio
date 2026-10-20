@@ -24,7 +24,7 @@ export const ProjectCard = ({ project, audioSrc }: ProjectCardProps) => {
   const handleMouseEnter = () => {
     if (!audioRef.current) {
       audioRef.current = new Audio(audioSrc);
-      audioRef.current.volume = 0.5;
+      audioRef.current.volume = 0.8;
     }
 
     audioRef.current.play().catch((err) => console.log('Browser waiting for a click:', err));
@@ -61,21 +61,16 @@ export const ProjectCard = ({ project, audioSrc }: ProjectCardProps) => {
 
     cardRef.current.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
 
-    if (!audioRef.current) return;
-
-    audioRef.current.pause();
-    audioRef.current.currentTime = 0;
-
     cardRef.current.style.setProperty('--mouse-x', '50%');
     cardRef.current.style.setProperty('--mouse-y', '50%');
   };
 
   return (
-    <div style={{ perspective: '1000px' }}>
+    <div style={{ perspective: '1000px', height: '100%' }}>
       <div
         ref={cardRef}
         className={styles.card}
-        style={{ transition: 'transform 0.1s ease-out' }}
+        style={{ transition: 'transform 0.1s ease-out', height: '100%' }}
         onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}

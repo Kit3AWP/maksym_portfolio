@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Mail, Send, Check } from 'lucide-react';
+import { Mail, Send, Check, ExternalLink, Copy } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
-import { FaLinkedin } from 'react-icons/fa'
+import { FaLinkedin } from 'react-icons/fa';
 import styles from './ContactsSection.module.scss';
 
 export const ContactsSection = () => {
@@ -74,6 +74,14 @@ export const ContactsSection = () => {
               <div className={styles.contactInfo}>
                 <span className={styles.label}>{contact.label}</span>
                 <span className={styles.value}>{contact.value}</span>
+              </div>
+
+              <div className={styles.externalIcon}>
+                {contact.isEmail ? (
+                  copied ? <Check size={20} /> : <Copy size={20} />
+                ) : (
+                  <ExternalLink size={20} />
+                )}
               </div>
             </a>
           ))}

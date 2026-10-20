@@ -115,6 +115,11 @@
       color: var(--color-accent);
       transform: scale(1.1);
     }
+
+    .externalIcon {
+      color: var(--color-accent);
+      transform: translate(3px, -3px) scale(1.1);
+    }
   }
 }
 
@@ -148,4 +153,22 @@
   font-size: 1.1rem;
   color: var(--text-primary);
   font-weight: 500;
+}
+
+.externalIcon {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.copiedState {
+  border-color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb), 0.1);
+  
+  .value, .externalIcon {
+    color: var(--color-accent);
+  }
 }
