@@ -7,7 +7,6 @@ $breakpoint-phone: 639px;
   }
 }
 
-
 @mixin on-phone {
   @media (max-width: $breakpoint-phone) {
     @content;

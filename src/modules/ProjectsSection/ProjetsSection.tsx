@@ -24,7 +24,7 @@ export const ProjectsSection = () => {
     {
       title: 'Personal Portfolio',
       description:
-        'A modern, responsive developer portfolio (the one you are viewing right now) featuring a custom glassmorphism design system and CSS animations.',
+        'A modern, responsive developer portfolio (the one you are viewing right now) featuring a custom glassmorphism design system, custom sound effects and CSS animations.',
       tech: ['React', 'TypeScript', 'Vite', 'SCSS'],
       github: 'https://github.com/Kit3AWP/maksym_portfolio',
       demo: 'https://maksym-portfolio-three.vercel.app',

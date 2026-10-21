@@ -8,6 +8,8 @@ export const CursorEffects = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (window.innerWidth <= 1099) return;
+
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }

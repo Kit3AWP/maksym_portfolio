@@ -13,6 +13,16 @@
   backdrop-filter: blur(10px);
   z-index: 100;
   border-bottom: 1px solid rgba(var(--text-primary-rgb), 0.05);
+
+  @include on-tablet {
+    height: 70px;
+    padding: 16px 6%;
+  }
+
+  @include on-phone {
+    height: 60px;
+    padding: 16px 6%;
+  }
 }
 
 .logo {
@@ -39,6 +49,10 @@
   display: flex;
   align-items: center;
   gap: 56px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
 }
 
 .soundButton {
@@ -67,16 +81,62 @@
   }
 }
 
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  z-index: 105;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  @include on-phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .nav {
   display: flex;
   gap: 64px;
 
   @include on-tablet {
-    gap: 32px;
+    gap: 32px; 
   }
 
   @include on-phone {
-    display: none;
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+    min-width: 220px;
+    
+    background: rgba(var(--bg-card-rgb), 0.95); 
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--text-primary-rgb), 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+
+    &.navOpen {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -89,10 +149,21 @@
   font-weight: 500;
   padding: 8px 0;
   position: relative;
+  cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {
     color: var(--color-accent);
+  }
+
+  @include on-tablet {
+    font-size: 1.1rem;
+  }
+
+  @include on-phone {
+    text-align: left;
+    width: fit-content;
+    padding: 4px 0;
   }
 
   &::after {

@@ -1,3 +1,5 @@
+@use '../../../styles/mixins' as *;
+
 .cursor-dot {
   position: fixed;
   top: -100px;
@@ -10,4 +12,15 @@
   z-index: 9999;
   box-shadow: 0 0 4px var(--color-accent), 0 0 4px var(--color-accent);
   transition: opacity 0.5s ease;
+
+  @media (hover: none) and (pointer: coarse) {
+    display: none;
+  }
+  
+  @include on-tablet {
+    display: none;
+  }
+  @include on-phone {
+    display: none;
+  }
 }
