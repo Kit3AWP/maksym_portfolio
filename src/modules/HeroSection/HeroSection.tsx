@@ -1,6 +1,7 @@
 import { TypeAnimation } from 'react-type-animation';
-import myPhoto from '../../assets/images/avatar.jpg';
 import { ArrowRight, Download, Mail } from 'lucide-react';
+import { MagneticWrapper } from '../../shared/components/MagneticWrapper/MagneticWrapper';
+import myPhoto from '../../assets/images/avatar.jpg';
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
@@ -39,12 +40,17 @@ export const HeroSection = () => {
         </p>
         <div className={styles.actions}>
           <div className={styles.mainButtons}>
-            <button className={styles.primaryBtn} onClick={() => scrollTo('projects')}>
-              View Projects <ArrowRight size={18} className={styles.arrow} />
-            </button>
-            <button className={styles.secondaryBtn} onClick={() => scrollTo('contacts')}>
-              Contact Me <Mail size={18} className={styles.mail} />
-            </button>
+            <MagneticWrapper>
+              <button className={styles.primaryBtn} onClick={() => scrollTo('projects')}>
+                View Projects <ArrowRight size={18} className={styles.arrow} />
+              </button>
+            </MagneticWrapper>
+
+            <MagneticWrapper>
+              <button className={styles.secondaryBtn} onClick={() => scrollTo('contacts')}>
+                Contact Me <Mail size={18} className={styles.mail} />
+              </button>
+            </MagneticWrapper>
           </div>
 
           <a href="/resume.pdf" download className={styles.cvLink}>

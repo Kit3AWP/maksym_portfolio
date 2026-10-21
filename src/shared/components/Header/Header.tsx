@@ -1,10 +1,13 @@
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { Volume2, VolumeX } from 'lucide-react';
 import { useSound } from '../../../context/SoundContext';
+import { useRef } from 'react';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { isSoundEnabled, toggleSound } = useSound();
+
+  const offSoundRef = useRef<HTMLAudioElement | null>(null);
 
   const activeSection = useActiveSection(['home', 'about', 'skills', 'projects', 'contacts']);
 
@@ -15,6 +18,17 @@ export const Header = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleToggleSound = () => {
+    toggleSound()
+
+    if (!offSoundRef.current) {
+      offSoundRef.current = new Audio('/sounds/SoundOnOff.mp3');
+    }
+
+    offSoundRef.current.currentTime = 0;
+    offSoundRef.current.play().catch((err) => console.log(err));
+  }
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -32,7 +46,7 @@ export const Header = () => {
 
       <div className={styles.rightSection}>
 
-        <button className={styles.soundButton} onClick={toggleSound}>
+        <button className={styles.soundButton} onClick={handleToggleSound}>
           {isSoundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
         </button>
 

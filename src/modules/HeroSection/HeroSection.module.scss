@@ -105,7 +105,7 @@
 
 .mainButtons {
   display: flex;
-  gap: 24px;
+  gap: 32px;
 
   @include on-phone {
     flex-direction: column;
