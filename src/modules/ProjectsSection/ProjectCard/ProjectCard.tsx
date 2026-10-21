@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { SiGithub } from 'react-icons/si';
 import { ExternalLink } from 'lucide-react';
+import { useSound } from '../../../context/SoundContext';
 import styles from '../ProjectsSection.module.scss';
 
 interface Project {
@@ -21,7 +22,17 @@ export const ProjectCard = ({ project, audioSrc }: ProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const { isSoundEnabled } = useSound();
+
+  useEffect(() => {
+    if (!isSoundEnabled && audioRef.current) {
+      audioRef.current.pause();
+    }
+  }, [isSoundEnabled]);
+
   const handleMouseEnter = () => {
+    if (!isSoundEnabled) return;
+
     if (!audioRef.current) {
       audioRef.current = new Audio(audioSrc);
       audioRef.current.volume = 0.8;

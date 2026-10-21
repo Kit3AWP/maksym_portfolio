@@ -47,6 +47,31 @@
   max-width: 320px;
 }
 
+.backButton {
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 42px;
+  border: 1px solid rgba(var(--text-primary-rgb), 0.05);
+  border-radius: 8px;
+  background: rgba(var(--bg-card-rgb), 0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+
+  .arrowIcon {
+    margin-right: 6px;
+  }
+
+  &:hover {
+    color: var(--color-accent);
+    background: rgba(var(--bg-card-rgb), 0.8);
+    border-color: rgba(var(--color-accent-rgb), 0.3);
+  }
+}
+
 .colTitle {
   color: var(--text-primary);
   font-size: 1.1rem;

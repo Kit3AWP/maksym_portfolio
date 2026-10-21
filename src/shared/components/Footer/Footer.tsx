@@ -1,15 +1,36 @@
-import { Mail, Send } from 'lucide-react';
+import { useRef } from 'react';
+import { ArrowUp, Mail, Send } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import { FaLinkedin } from 'react-icons/fa';
+import { useSound } from '../../../context/SoundContext';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
+  const backSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  const { isSoundEnabled } = useSound();
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToTop = () => {
+    document.body.style.pointerEvents = 'none';
+
+    setTimeout(() => {
+      document.body.style.pointerEvents = '';
+    }, 1000)
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (!isSoundEnabled) return;
+
+    if (!backSoundRef.current) {
+      backSoundRef.current = new Audio('/sounds/Back.mp3');
+    }
+
+    backSoundRef.current.currentTime = 0;
+    backSoundRef.current.play().catch((err) => console.log(err));
   };
 
   return (
@@ -22,6 +43,9 @@ export const Footer = () => {
           <p className={styles.desc}>
             Crafting beautiful, functional web experiences with modern technologies and clean code.
           </p>
+          <button onClick={scrollToTop} className={styles.backButton}>
+            <ArrowUp size={20} className={styles.arrowIcon} /> Back to top
+          </button>
         </div>
 
         <div className={styles.linksCol}>
@@ -53,7 +77,7 @@ export const Footer = () => {
             </a>
           </div>
           <a href="maxim.golya@gmail.com" className={styles.email}>
-            Email: maxim.golya@gmail.com <Mail size={20} className={styles.icon}/>
+            Email: maxim.golya@gmail.com <Mail size={20} className={styles.icon} />
           </a>
         </div>
       </div>

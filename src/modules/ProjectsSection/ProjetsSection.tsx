@@ -15,7 +15,7 @@ export const ProjectsSection = () => {
     {
       title: 'Phone Catalog',
       description:
-        'An interactive catalog of Apple devices with cart, favorites, category filtering, pagination, and detailed specification pages.',
+        'An interactive catalog of Apple devices with cart, favorites, category filtering, pagination, detailed specification pages and theme switching.',
       tech: ['React', 'React Context', 'TypeScript', 'REST API', 'SCSS'],
       github: 'https://github.com/Kit3AWP/Phone_catalog',
       demo: 'https://kit3awp.github.io/Phone_catalog/',
@@ -34,7 +34,7 @@ export const ProjectsSection = () => {
       title: '2048 Game Clone',
       description:
         'A fully functional browser-based recreation of the classic 2048 puzzle game, focusing on object oriented programming, state management, and DOM manipulation.',
-      tech: ['JavaScript', 'OOP', 'HTML5', 'CSS3'],
+      tech: ['JavaScript', 'OOP', 'HTML5', 'CSS3', 'DOM'],
       github: 'https://github.com/Kit3AWP/JavaScript_2048_game',
       demo: 'https://kit3awp.github.io/JavaScript_2048_game/',
       image: '/screenshots/2048game.webp',
@@ -57,7 +57,7 @@ export const ProjectsSection = () => {
             <ProjectCard
               key={index}
               project={project}
-              audioSrc="/sounds/ActiveTile2.mp3"
+              audioSrc="/sounds/ActiveTile.mp3"
             />
           ))}
         </div>
