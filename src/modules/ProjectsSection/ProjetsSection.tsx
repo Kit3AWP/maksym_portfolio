@@ -4,13 +4,13 @@ import styles from './ProjectsSection.module.scss';
 export const ProjectsSection = () => {
   const projects = [
     {
-      title: 'Gift Finder App',
+      title: 'Gift Finder Application',
       description:
         'A dynamic web application for finding gifts, featuring advanced product filtering, smooth loading animations, personal profile and interactive wishlist management.',
       tech: ['React', 'Redux', 'TypeScript', 'REST API', 'Docker', 'SCSS'],
       github: 'https://github.com/eugeneermakov696/gift-finder-app',
       demo: 'https://frontend-test-3fea.up.railway.app',
-      image: 'https://via.placeholder.com/600x400/141419/56b0ff?text=Gift+Finder+App',
+      image: '/screenshots/GiftFinder.webp',
     },
     {
       title: 'Phone Catalog',
@@ -28,7 +28,7 @@ export const ProjectsSection = () => {
       tech: ['React', 'TypeScript', 'Vite', 'SCSS'],
       github: 'https://github.com/Kit3AWP/maksym_portfolio',
       demo: 'https://maksym-portfolio-three.vercel.app',
-      image: 'https://via.placeholder.com/600x400/141419/56b0ff?text=Portfolio',
+      image: '/screenshots/Portfolio.webp',
     },
     {
       title: '2048 Game Clone',

@@ -6,6 +6,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include on-tablet {
+    padding: 0;
+    margin-top: 80px;
+  }
+
+  @include on-phone {
+    margin-top: 60px;
+  }
 }
 
 .glassContainer {
@@ -31,8 +40,13 @@
     background: linear-gradient(90deg, transparent, rgba(var(--color-accent-rgb), 0.5), transparent);
   }
 
+  @include on-tablet {
+    padding: 48px 32px;
+  }
+
   @include on-phone {
-    padding: 32px 20px;
+    padding: 32px 16px;
+    border-radius: 20px;
   }
 }
 
@@ -50,11 +64,22 @@
     font-size: 1.2rem;
     color: rgba(var(--color-accent-rgb), 0.4);
     font-weight: 400;
+
+    @include on-phone {
+      font-size: 1rem;
+    }
+  }
+
+  @include on-tablet {
+    font-size: 2.5rem;
+    margin-bottom: 32px;
   }
 
   @include on-phone {
     font-size: 2rem;
+    margin-bottom: 24px;
     flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
@@ -66,6 +91,10 @@
   @include on-tablet {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  @include on-phone {
+    gap: 32px;
   }
 }
 
@@ -79,10 +108,23 @@
     line-height: 1.7;
     color: var(--text-secondary);
     margin: 0;
+
+    @include on-tablet {
+      font-size: 1.05rem;
+    }
+
+    @include on-phone {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      gap: 16px;
+    }
   }
 }
 
-.factsWrapper { display: flex; flex-direction: column; }
+.factsWrapper { 
+  display: flex; 
+  flex-direction: column; 
+}
 
 .cardTitle {
   font-size: 1.2rem;
@@ -90,6 +132,11 @@
   margin-top: 0;
   margin-bottom: 24px;
   font-weight: 600;
+
+  @include on-phone {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
 }
 
 .factsList {
@@ -106,6 +153,11 @@
     gap: 16px;
     color: var(--text-secondary);
     font-size: 1rem;
+
+    @include on-phone {
+      font-size: 0.95rem;
+      gap: 12px;
+    }
   }
 }
 

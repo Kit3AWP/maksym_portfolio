@@ -4,6 +4,7 @@ export const MagneticWrapper = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMouseMove = (e: React.MouseEvent) => {
+    if (window.innerWidth <= 1024 || window.matchMedia('(hover: none)').matches) return;
     if (!ref.current) return;
 
     const element = ref.current.getBoundingClientRect();
@@ -17,6 +18,7 @@ export const MagneticWrapper = ({ children }: { children: ReactNode }) => {
   };
 
   const onMouseLeave = () => {
+    if (window.innerWidth <= 1024 || window.matchMedia('(hover: none)').matches) return;
     if (ref.current) ref.current.style.transform = '';
   };
 

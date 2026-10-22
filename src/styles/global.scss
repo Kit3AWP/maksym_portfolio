@@ -108,7 +108,7 @@ main {
   padding: 80px 32px;
 
   @include on-tablet {
-    padding: 60px 24px;
+    padding: 60px 32px;
   }
 
   @include on-phone {

@@ -3,6 +3,15 @@
 .projectsSection {
   margin-top: 120px;
   padding: 0 8%;
+
+  @include on-tablet {
+    padding: 0;
+    margin-top: 80px;
+  }
+
+  @include on-phone {
+    margin-top: 60px;
+  }
 }
 
 .container {
@@ -11,7 +20,13 @@
   margin: 0 auto;
 }
 
-.header { margin-bottom: 60px; }
+.header {
+  margin-bottom: 60px;
+
+  @include on-phone {
+    margin-bottom: 40px;
+  }
+}
 
 .title {
   font-size: 3rem;
@@ -26,11 +41,20 @@
     font-size: 1.2rem;
     color: rgba(var(--color-accent-rgb), 0.4);
     font-weight: 400;
+
+    @include on-phone {
+      font-size: 0.9rem;
+    }
+  }
+
+  @include on-tablet {
+    font-size: 2.5rem;
   }
 
   @include on-phone {
-    font-size: 2rem;
+    font-size: 1.6rem;
     flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
@@ -41,6 +65,10 @@
 
   @include on-tablet {
     grid-template-columns: 1fr;
+  }
+
+  @include on-phone {
+    gap: 20px;
   }
 }
 
@@ -74,12 +102,27 @@
   transition: transform 0.3s ease, border-color 0.3s ease;
   position: relative;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--color-accent-rgb), 0.5), transparent);
+    z-index: 2;
+  }
+
   &:hover {
     border-color: rgba(var(--color-accent-rgb), 0.3);
 
     .glare {
       opacity: 1;
     }
+  }
+
+  @include on-phone {
+    border-radius: 20px;
   }
 }
 
@@ -105,7 +148,7 @@
   flex-grow: 1;
 
   @include on-phone {
-    padding: 24px;
+    padding: 24px 20px;
   }
 }
 
@@ -114,6 +157,11 @@
   color: var(--text-primary);
   margin: 0 0 16px 0;
   font-weight: 600;
+
+  @include on-phone {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
 }
 
 .projectDesc {
@@ -122,6 +170,12 @@
   line-height: 1.6;
   margin: 0 0 24px 0;
   flex-grow: 1;
+
+  @include on-phone {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
 }
 
 .techStack {
@@ -130,6 +184,11 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 32px;
+
+  @include on-phone {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
 }
 
 .techTag {
@@ -139,6 +198,11 @@
   padding: 6px 12px;
   border-radius: 6px;
   border: 1px solid rgba(var(--color-accent-rgb), 0.15);
+
+  @include on-phone {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
 }
 
 .links {
@@ -147,6 +211,7 @@
 
   @include on-phone {
     flex-direction: column;
+    gap: 12px;
   }
 }
 
@@ -163,6 +228,11 @@
   padding: 10px 20px;
   border-radius: 8px;
   transition: all 0.3s ease;
+
+  @include on-phone {
+    width: 100%;
+    padding: 12px;
+  }
 
   &:hover {
     background: rgba(var(--color-accent-rgb), 0.15);

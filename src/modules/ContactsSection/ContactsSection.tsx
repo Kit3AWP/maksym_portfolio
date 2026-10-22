@@ -15,6 +15,7 @@ export const ContactsSection = () => {
   const email = 'maxim.golya@gmail.com';
 
   const handleCardHover = (label: string, src: string) => {
+    if (window.matchMedia('(hover: none)').matches) return;
     if (!isSoundEnabled) return;
 
     if (!soundsMapRef.current[label]) {

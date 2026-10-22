@@ -41,6 +41,7 @@ export const SkillsSection = () => {
   const soundsMapRef = useRef<Record<string, HTMLAudioElement>>({});
 
   const handleSkillHover = (name: string, src: string) => {
+    if (window.matchMedia('(hover: none)').matches) return;
     if (!isSoundEnabled) return;
 
     if (!soundsMapRef.current[name]) {

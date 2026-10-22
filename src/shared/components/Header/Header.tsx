@@ -8,7 +8,10 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isSoundEnabled, toggleSound } = useSound();
 
+  const onSoundRef = useRef<HTMLAudioElement | null>(null);
   const offSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  const navSoundsRef = useRef<Record<string, HTMLAudioElement>>({});
 
   const activeSection = useActiveSection(['home', 'about', 'skills', 'projects', 'contacts']);
 
@@ -21,31 +24,45 @@ export const Header = () => {
   };
 
   const handleToggleSound = () => {
-    toggleSound()
+    toggleSound();
 
-    if (!offSoundRef.current) {
-      offSoundRef.current = new Audio('/sounds/SoundOnOff.mp3');
+    if (!isSoundEnabled) {
+      if (!onSoundRef.current) {
+        onSoundRef.current = new Audio('/sounds/SpeakerOn.mp3');
+      }
+      onSoundRef.current.currentTime = 0;
+      onSoundRef.current.play().catch(console.error);
+    } else {
+      if (!offSoundRef.current) {
+        offSoundRef.current = new Audio('/sounds/SpeakerOff.mp3');
+      }
+      offSoundRef.current.currentTime = 0;
+      offSoundRef.current.play().catch(console.error);
     }
-
-    offSoundRef.current.currentTime = 0;
-    offSoundRef.current.play().catch((err) => console.log(err));
-  }
+  };
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contacts', label: 'Contact' },
+    { id: 'home', label: 'Home', soundSrc: '/sounds/Link1.mp3' },
+    { id: 'about', label: 'About', soundSrc: '/sounds/Link2.mp3' },
+    { id: 'skills', label: 'Skills', soundSrc: '/sounds/Link3.mp3' },
+    { id: 'projects', label: 'Projects', soundSrc: '/sounds/Link4.mp3' },
+    { id: 'contacts', label: 'Contact', soundSrc: '/sounds/Link5.mp3' },
   ];
 
-  const handleNavClick = (id: string) => {
+  const handleNavClick = (id: string, src: string) => {
     setIsMenuOpen(false);
     if (id === 'home') {
       scrollToTop();
     } else {
       scrollTo(id);
     }
+
+    if (!navSoundsRef.current[src]) {
+      navSoundsRef.current[src] = new Audio(src);
+    }
+
+    navSoundsRef.current[src].currentTime = 0;
+    navSoundsRef.current[src].play().catch(console.error);
   };
 
   return (
@@ -59,10 +76,7 @@ export const Header = () => {
           {isSoundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
         </button>
 
-        <button 
-          className={styles.menuToggle} 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
+        <button className={styles.menuToggle} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
@@ -71,7 +85,7 @@ export const Header = () => {
             <button
               key={item.id}
               className={`${styles.navLink} ${activeSection === item.id ? styles.active : ''}`}
-              onClick={() => handleNavClick(item.id)}
+              onClick={() => handleNavClick(item.id, item.soundSrc)}
             >
               {item.label}
             </button>
