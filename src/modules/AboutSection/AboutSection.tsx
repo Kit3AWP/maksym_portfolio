@@ -53,7 +53,7 @@ export const AboutSection = () => {
                 <span className={styles.iconWrapper}>
                   <MapPin size={20} className={styles.icon} />
                 </span>
-                <span>Kyiv, Ukraine 🇺🇦</span>
+                <span>Kyiv, Ukraine <span className={styles.uaText}>U&zwnj;A</span></span>
               </li>
             </ul>
           </div>

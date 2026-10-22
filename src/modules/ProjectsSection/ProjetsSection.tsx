@@ -34,7 +34,7 @@ export const ProjectsSection = () => {
       title: '2048 Game Clone',
       description:
         'A fully functional browser-based recreation of the classic 2048 puzzle game, focusing on object oriented programming, state management, and DOM manipulation.',
-      tech: ['JavaScript', 'OOP', 'HTML5', 'CSS3', 'DOM'],
+      tech: ['JavaScript', 'OOP', 'DOM', 'HTML5', 'CSS3'],
       github: 'https://github.com/Kit3AWP/JavaScript_2048_game',
       demo: 'https://kit3awp.github.io/JavaScript_2048_game/',
       image: '/screenshots/2048game.webp',

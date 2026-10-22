@@ -31,7 +31,14 @@ export const ProjectCard = ({ project, audioSrc }: ProjectCardProps) => {
   }, [isSoundEnabled]);
 
   const handleMouseEnter = () => {
-    if (window.matchMedia('(hover: none)').matches) return;
+    if (
+      window.matchMedia('(hover: none)').matches ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0
+    ) {
+      return;
+    }
+
     if (!isSoundEnabled) return;
 
     if (!audioRef.current) {

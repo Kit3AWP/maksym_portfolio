@@ -18,8 +18,18 @@ import styles from './SkillsSection.module.scss';
 
 export const SkillsSection = () => {
   const skills = [
-    { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E', soundSrc: '/sounds/1Skill.mp3'},
-    { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6', soundSrc: '/sounds/2Skill.mp3' },
+    {
+      name: 'JavaScript',
+      icon: <SiJavascript />,
+      color: '#F7DF1E',
+      soundSrc: '/sounds/1Skill.mp3',
+    },
+    {
+      name: 'TypeScript',
+      icon: <SiTypescript />,
+      color: '#3178C6',
+      soundSrc: '/sounds/2Skill.mp3',
+    },
     { name: 'React', icon: <SiReact />, color: '#61DAFB', soundSrc: '/sounds/3Skill.mp3' },
     { name: 'Redux.js', icon: <SiRedux />, color: '#764ABC', soundSrc: '/sounds/4Skill.mp3' },
     { name: 'HTML5', icon: <SiHtml5 />, color: '#E34F26', soundSrc: '/sounds/5Skill.mp3' },
@@ -30,7 +40,12 @@ export const SkillsSection = () => {
       color: 'var(--color-accent)',
       soundSrc: '/sounds/12Skill.mp3',
     },
-    { name: 'REST API & Axios', icon: <TbApi />, color: 'var(--color-accent)', soundSrc: '/sounds/11Skill.mp3' },
+    {
+      name: 'REST API & Axios',
+      icon: <TbApi />,
+      color: 'var(--color-accent)',
+      soundSrc: '/sounds/11Skill.mp3',
+    },
     { name: 'Git', icon: <SiGit />, color: '#F05032', soundSrc: '/sounds/10Skill.mp3' },
     { name: 'GitHub', icon: <SiGithub />, color: '#ffffff', soundSrc: '/sounds/9Skill.mp3' },
     { name: 'Docker', icon: <SiDocker />, color: '#2496ED', soundSrc: '/sounds/8Skill.mp3' },
@@ -41,7 +56,14 @@ export const SkillsSection = () => {
   const soundsMapRef = useRef<Record<string, HTMLAudioElement>>({});
 
   const handleSkillHover = (name: string, src: string) => {
-    if (window.matchMedia('(hover: none)').matches) return;
+    if (
+      window.matchMedia('(hover: none)').matches ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0
+    ) {
+      return;
+    }
+
     if (!isSoundEnabled) return;
 
     if (!soundsMapRef.current[name]) {
@@ -49,8 +71,8 @@ export const SkillsSection = () => {
     }
 
     soundsMapRef.current[name].currentTime = 0;
-    soundsMapRef.current[name].play().catch(console.error)
-  }
+    soundsMapRef.current[name].play().catch(console.error);
+  };
 
   return (
     <section id="skills" className={styles.skillsSection}>
@@ -59,7 +81,7 @@ export const SkillsSection = () => {
           <span className={styles.subtitle}>SKILLS & EXPERTISE</span>
           <h2 className={styles.title}>
             <span className={styles.tag}>&lt;h2&gt;</span>
-              My Tech Stack
+            My Tech Stack
             <span className={styles.tag}>&lt;/h2&gt;</span>
           </h2>
           <p className={styles.description}>

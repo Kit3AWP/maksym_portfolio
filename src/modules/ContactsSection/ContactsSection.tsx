@@ -7,15 +7,22 @@ import styles from './ContactsSection.module.scss';
 
 export const ContactsSection = () => {
   const [copied, setCopied] = useState(false);
-  const soundsMapRef = useRef<Record<string, HTMLAudioElement>>({})
+  const soundsMapRef = useRef<Record<string, HTMLAudioElement>>({});
   const copySoundRef = useRef<HTMLAudioElement | null>(null);
 
   const { isSoundEnabled } = useSound();
-  
+
   const email = 'maxim.golya@gmail.com';
 
   const handleCardHover = (label: string, src: string) => {
-    if (window.matchMedia('(hover: none)').matches) return;
+    if (
+      window.matchMedia('(hover: none)').matches ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0
+    ) {
+      return;
+    }
+
     if (!isSoundEnabled) return;
 
     if (!soundsMapRef.current[label]) {
@@ -25,7 +32,7 @@ export const ContactsSection = () => {
     soundsMapRef.current[label].currentTime = 0;
     soundsMapRef.current[label].volume = 0.7;
     soundsMapRef.current[label].play().catch((err) => console.log(err));
-  }
+  };
 
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -111,7 +118,11 @@ export const ContactsSection = () => {
 
               <div className={styles.externalIcon}>
                 {contact.isEmail ? (
-                  copied ? <Check size={20} /> : <Copy size={20} />
+                  copied ? (
+                    <Check size={20} />
+                  ) : (
+                    <Copy size={20} />
+                  )
                 ) : (
                   <ExternalLink size={20} />
                 )}

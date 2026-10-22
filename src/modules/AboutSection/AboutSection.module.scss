@@ -161,6 +161,12 @@
   }
 }
 
+.uaText {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
 .iconWrapper {
   background: rgba(var(--text-primary-rgb), 0.05);
   padding: 10px;
