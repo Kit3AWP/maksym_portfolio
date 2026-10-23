@@ -4,7 +4,7 @@ import styles from './ProjectsSection.module.scss';
 export const ProjectsSection = () => {
   const projects = [
     {
-      title: 'Gift Finder Application',
+      title: 'Gift Finder Application (Team project)',
       description:
         'A dynamic web application for finding gifts, featuring advanced product filtering, smooth loading animations, personal profile and interactive wishlist management.',
       tech: ['React', 'Redux', 'TypeScript', 'REST API', 'Docker', 'SCSS'],
@@ -25,7 +25,7 @@ export const ProjectsSection = () => {
       title: 'Personal Portfolio',
       description:
         'A modern, responsive developer portfolio (the one you are viewing right now) featuring a custom glassmorphism design system, custom sound effects and CSS animations.',
-      tech: ['React', 'TypeScript', 'Vite', 'SCSS'],
+      tech: ['React', 'TypeScript', 'Vite', 'SCSS modules'],
       github: 'https://github.com/Kit3AWP/maksym_portfolio',
       demo: 'https://maksym-portfolio-three.vercel.app',
       image: '/screenshots/Portfolio.webp',

@@ -7,7 +7,7 @@ export const AboutSection = () => {
       <div className={styles.glassContainer}>
         <h2 className={styles.title}>
           <span className={styles.tag}>&lt;h2&gt;</span>
-            About Me
+          About Me
           <span className={styles.tag}>&lt;/h2&gt;</span>
         </h2>
 
@@ -20,11 +20,12 @@ export const AboutSection = () => {
             </p>
             <p>
               I am currently a 2nd-year Computer Science student, continuously deepening my
-              knowledge in modern web architectures. I focus on the React ecosystem and
-              writing clean, scalable code with TypeScript.
+              knowledge in modern web architectures. I focus on the React ecosystem and writing
+              clean, scalable code with TypeScript.
             </p>
             <p>
-              Some text here but I don't know what to write here
+              Some text here but I don't know what to write here{' '}
+              <span className={styles.transparentText}>(does anyone actually read this?)</span>
             </p>
           </div>
 
@@ -53,7 +54,9 @@ export const AboutSection = () => {
                 <span className={styles.iconWrapper}>
                   <MapPin size={20} className={styles.icon} />
                 </span>
-                <span>Kyiv, Ukraine <span className={styles.uaText}>U&zwnj;A</span></span>
+                <span>
+                  Kyiv, Ukraine <span className={styles.uaText}>U&zwnj;A</span>
+                </span>
               </li>
             </ul>
           </div>

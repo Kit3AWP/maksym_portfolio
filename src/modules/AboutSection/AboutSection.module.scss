@@ -121,6 +121,10 @@
   }
 }
 
+.transparentText {
+  opacity: 0.1;
+}
+
 .factsWrapper { 
   display: flex; 
   flex-direction: column; 
@@ -153,6 +157,7 @@
     gap: 16px;
     color: var(--text-secondary);
     font-size: 1rem;
+    font-weight: 500;
 
     @include on-phone {
       font-size: 0.95rem;
