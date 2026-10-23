@@ -1,3 +1,5 @@
+Message for mentor: I have no CV right now, I'll add it later, and I've already got aproove of phone catalog, just wanted to make sure if this portfolio is good
+
 # Maksym | Frontend Developer Portfolio
 
 A personal portfolio website built to showcase my projects, skills, and frontend development journey. The project focuses on high-quality UX, featuring a dark-mode glassmorphism UI, custom sound integrations, magnetic interactions, and a fully responsive design.
