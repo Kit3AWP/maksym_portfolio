@@ -5,7 +5,14 @@ import myPhoto from '../../assets/images/avatar.jpg';
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
+  
   const scrollTo = (id: string) => {
+    document.body.style.pointerEvents = 'none';
+
+    setTimeout(() => {
+      document.body.style.pointerEvents = '';
+    }, 800)
+
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 

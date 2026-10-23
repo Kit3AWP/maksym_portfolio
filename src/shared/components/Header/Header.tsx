@@ -57,6 +57,9 @@ export const Header = () => {
       scrollTo(id);
     }
 
+
+    if (!isSoundEnabled) return;
+
     if (!navSoundsRef.current[src]) {
       navSoundsRef.current[src] = new Audio(src);
     }

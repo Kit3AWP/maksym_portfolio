@@ -38,6 +38,10 @@ export const ContactsSection = () => {
     e.preventDefault();
     navigator.clipboard.writeText(email);
     setCopied(true);
+    
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
 
     if (!copySoundRef.current) {
       copySoundRef.current = new Audio('/sounds/Mark.mp3');
@@ -47,10 +51,6 @@ export const ContactsSection = () => {
 
     copySoundRef.current.currentTime = 0;
     copySoundRef.current.play().catch((err) => console.log(err));
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
   };
   const contacts = [
     {
