@@ -197,6 +197,7 @@
   background: rgba(var(--color-accent-rgb), 0.08);
   padding: 6px 12px;
   border-radius: 6px;
+  cursor: default;
   border: 1px solid rgba(var(--color-accent-rgb), 0.15);
 
   @include on-phone {

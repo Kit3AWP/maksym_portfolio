@@ -4,7 +4,9 @@ import { useSound } from '../../../context/SoundContext';
 export const MagneticWrapper = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { isSoundEnabled } = useSound();
+  
   const magnetAudioRef = useRef<HTMLAudioElement | null>(null);
+  const magnetLeaveAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const onMouseEnter = () => {
     if (window.matchMedia('(hover: none)').matches || 'ontouchstart' in window) return;
@@ -30,7 +32,7 @@ export const MagneticWrapper = ({ children }: { children: ReactNode }) => {
     const distanceX = e.clientX - centerX;
     const distanceY = e.clientY - centerY;
 
-    ref.current.style.transform = `translate(${distanceX * 0.2}px,${distanceY * 0.2}px)`;
+    ref.current.style.transform = `translate(${distanceX * 0.2}px, ${distanceY * 0.2}px)`;
   };
 
   const onMouseLeave = () => {
@@ -41,13 +43,21 @@ export const MagneticWrapper = ({ children }: { children: ReactNode }) => {
       magnetAudioRef.current.pause();
       magnetAudioRef.current.currentTime = 0;
     }
+
+    if (isSoundEnabled) {
+      if (!magnetLeaveAudioRef.current) {
+        magnetLeaveAudioRef.current = new Audio('/sounds/MagnetismEnding.mp3');
+        magnetLeaveAudioRef.current.volume = 0.5;
+      }
+      magnetLeaveAudioRef.current.currentTime = 0;
+      magnetLeaveAudioRef.current.play().catch(console.error);
+    }
   };
 
   useEffect(() => {
     return () => {
-      if (magnetAudioRef.current) {
-        magnetAudioRef.current.pause();
-      }
+      if (magnetAudioRef.current) magnetAudioRef.current.pause();
+      if (magnetLeaveAudioRef.current) magnetLeaveAudioRef.current.pause();
     };
   }, []);
 

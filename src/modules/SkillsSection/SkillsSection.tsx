@@ -55,7 +55,7 @@ export const SkillsSection = () => {
   const { isSoundEnabled } = useSound();
   const soundsMapRef = useRef<Record<string, HTMLAudioElement>>({});
 
-  const handleSkillHover = (name: string, src: string) => {
+  const handleSkillClick = (name: string, src: string) => {
     if (
       window.matchMedia('(hover: none)').matches ||
       'ontouchstart' in window ||
@@ -95,7 +95,7 @@ export const SkillsSection = () => {
               key={index}
               className={styles.card}
               style={{ '--hover-color': skill.color } as React.CSSProperties}
-              onMouseEnter={() => handleSkillHover(skill.name, skill.soundSrc)}
+              onClick={() => handleSkillClick(skill.name, skill.soundSrc)}
             >
               <div className={styles.iconWrapper}>{skill.icon}</div>
               <span className={styles.skillName}>{skill.name}</span>

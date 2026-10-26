@@ -9,6 +9,7 @@ export const ContactsSection = () => {
   const [copied, setCopied] = useState(false);
   const soundsMapRef = useRef<Record<string, HTMLAudioElement>>({});
   const copySoundRef = useRef<HTMLAudioElement | null>(null);
+  const clickSoundRef = useRef<HTMLAudioElement | null>(null);
 
   const { isSoundEnabled } = useSound();
 
@@ -34,11 +35,23 @@ export const ContactsSection = () => {
     soundsMapRef.current[label].play().catch((err) => console.log(err));
   };
 
+  const handleCardClick = () => {
+    if (!isSoundEnabled) return;
+
+    if (!clickSoundRef.current) {
+      clickSoundRef.current = new Audio('/sounds/Enter.mp3');
+      clickSoundRef.current.volume = 0.4;
+    }
+
+    clickSoundRef.current.currentTime = 0;
+    clickSoundRef.current.play().catch((err) => console.log(err));
+  };
+
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
     navigator.clipboard.writeText(email);
     setCopied(true);
-    
+
     setTimeout(() => {
       setCopied(false);
     }, 2000);
@@ -52,6 +65,7 @@ export const ContactsSection = () => {
     copySoundRef.current.currentTime = 0;
     copySoundRef.current.play().catch((err) => console.log(err));
   };
+
   const contacts = [
     {
       icon: copied ? <Check size={32} color="var(--color-accent)" /> : <Mail size={32} />,
@@ -107,7 +121,7 @@ export const ContactsSection = () => {
               target={contact.isEmail ? undefined : '_blank'}
               rel="noopener noreferrer"
               className={`${styles.contactCard} ${contact.isEmail && copied ? styles.copiedState : ''}`}
-              onClick={contact.isEmail ? handleCopyEmail : undefined}
+              onClick={contact.isEmail ? handleCopyEmail : handleCardClick}
               onMouseEnter={() => handleCardHover(contact.label, contact.hoverSoundSrc)}
             >
               <div className={styles.iconWrapper}>{contact.icon}</div>

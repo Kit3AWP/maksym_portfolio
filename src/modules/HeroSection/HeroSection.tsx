@@ -1,19 +1,35 @@
 import { TypeAnimation } from 'react-type-animation';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 import { MagneticWrapper } from '../../shared/components/MagneticWrapper/MagneticWrapper';
+import { useSound } from '../../context/SoundContext';
+import { useRef } from 'react';
 import myPhoto from '../../assets/images/avatar.jpg';
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
-  
   const scrollTo = (id: string) => {
     document.body.style.pointerEvents = 'none';
 
     setTimeout(() => {
       document.body.style.pointerEvents = '';
-    }, 800)
+    }, 800);
 
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const { isSoundEnabled } = useSound();
+  const downloadSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleDownloadClick = () => {
+    if (!isSoundEnabled) return;
+
+    if (!downloadSoundRef.current) {
+      downloadSoundRef.current = new Audio('/sounds/Download.mp3');
+      downloadSoundRef.current.volume = 0.5;
+    }
+
+    downloadSoundRef.current.currentTime = 0;
+    downloadSoundRef.current.play().catch(console.error);
   };
 
   return (
@@ -60,7 +76,7 @@ export const HeroSection = () => {
             </MagneticWrapper>
           </div>
 
-          <a href="/resume.pdf" download className={styles.cvLink}>
+          <a href="/resume.pdf" download className={styles.cvLink} onClick={handleDownloadClick}>
             <Download size={16} />
             Download CV
           </a>

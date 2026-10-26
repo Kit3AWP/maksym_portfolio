@@ -76,9 +76,9 @@ export const Footer = () => {
               <Send size={20} />
             </a>
           </div>
-          <a href="maxim.golya@gmail.com" className={styles.email}>
+          <p className={styles.email}>
             Email: maxim.golya@gmail.com <Mail size={20} className={styles.icon} />
-          </a>
+          </p>
         </div>
       </div>
 
